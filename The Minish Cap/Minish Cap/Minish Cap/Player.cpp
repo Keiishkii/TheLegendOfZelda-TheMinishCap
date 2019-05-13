@@ -32,11 +32,8 @@ Player::Player(SDL_Rect _pos) : GameObject(_pos)
 
 void Player::update()
 {
-	processesStates();
 	getInput();
-
-	if (InputManager::input.MouseLeftDown)
-		std::cout << "leftMouseClicked" << std::endl;
+	processesStates();
 
 	position.x = xPos;
 	position.y = yPos;
@@ -184,52 +181,6 @@ void Player::attacking()
 	case EAST:
 		break;
 	case SOUTH:
-	{
-		if (animationFrame < 3)
-		{
-
-		}
-		else if (animationFrame < 6)
-		{
-
-		}
-		else if (animationFrame < 9)
-		{
-
-		}
-		else if (animationFrame < 12)
-		{
-
-		}
-		else if (animationFrame < 15)
-		{
-
-		}
-		else if (animationFrame < 18)
-		{
-
-		}
-		else if (animationFrame < 21)
-		{
-
-		}
-		else if (animationFrame < 24)
-		{
-
-		}
-		else if (animationFrame < 27)
-		{
-
-		}
-		else if (animationFrame < 30)
-		{
-
-		}
-		else if (animationFrame < 33)
-		{
-
-		}
-	}
 		break;
 	case WEST:
 		break;
@@ -268,6 +219,7 @@ void Player::getInput()
 				state = WALKING;
 				direction = EAST;
 			}
+			break;
 		}
 		case WALKING:
 		{
@@ -295,17 +247,24 @@ void Player::getInput()
 			{
 				state = IDLE;
 			}
+			break;
 		}
 		case ATTACKING:
 		{
+			int animationLength = 2;
+
 			if (InputManager::input.MouseLeftClicked)
 			{
 				animationFrame = 0;
 			}
-			else if (animationFrame >= 33)
+			else if (direction == WEST || direction == EAST)
 			{
-				state = IDLE;
+				if (animationFrame >= animationLength * 10)
+					state = IDLE;
 			}
+			else if (animationFrame >= animationLength * 11)
+				state = IDLE;
+			break;
 		}
 	}
 
@@ -330,6 +289,7 @@ void Player::draw(SDL_Renderer ** _renderer)
 				texturePos = { 72, 3, 32, 32 };
 				break;
 			}
+			case WEST:
 			case EAST:
 			{
 				texturePos = { 40, 3, 32, 32 };
@@ -340,55 +300,56 @@ void Player::draw(SDL_Renderer ** _renderer)
 				texturePos = {8, 3, 32, 32};
 				break;
 			}
-			case WEST:
-			{
-				texturePos = { 40, 3, 32, 32 };
-				break;
-			}		
 		}
 		break;
 	}
 	case WALKING:
 	{
+		int animationLength = 5;
+
 		switch (direction)
 		{
 			case NORTH:
 			{
-				if (animationFrame < 5)
+				if (animationFrame < animationLength)
 				{
 					texturePos = { 676, 71, 32, 32 };
 				}
-				else if (animationFrame < 10)
+				else if (animationFrame < animationLength * 2)
 				{
 					texturePos = { 708, 71, 32, 32 };
 				}
-				else if (animationFrame < 15)
+				else if (animationFrame < animationLength * 3)
 				{
 					texturePos = { 740, 71, 32, 32 };
 				}
-				else if (animationFrame < 20)
+				else if (animationFrame < animationLength * 4)
 				{
 					texturePos = { 772, 71, 32, 32 };
 				}
-				else if (animationFrame < 25)
+				else if (animationFrame < animationLength * 5)
 				{
 					texturePos = { 804, 71, 32, 32 };
 				}
-				else if (animationFrame < 30)
+				else if (animationFrame < animationLength * 6)
 				{
 					texturePos = { 836, 71, 32, 32 };
 				}
-				else if (animationFrame < 35)
+				else if (animationFrame < animationLength * 7)
 				{
 					texturePos = { 868, 71, 32, 32 };
 				}
-				else if (animationFrame < 40)
+				else if (animationFrame < animationLength * 8)
 				{
 					texturePos = { 900, 71, 32, 32 };
 				}
-				else if (animationFrame < 45)
+				else if (animationFrame < animationLength * 9)
 				{
 					texturePos = { 932, 71, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 10)
+				{
+					texturePos = { 964, 71, 32, 32 };
 				}
 				else
 				{
@@ -396,45 +357,46 @@ void Player::draw(SDL_Renderer ** _renderer)
 				}
 				break;
 			}
+			case WEST:
 			case EAST:
 			{
-				if (animationFrame < 5)
+				if (animationFrame < animationLength)
 				{
 					texturePos = { 341, 71, 32, 32 };
 				}
-				else if (animationFrame < 10)
+				else if (animationFrame < animationLength * 2)
 				{
 					texturePos = { 373, 71, 32, 32 };
 				}
-				else if (animationFrame < 15)
+				else if (animationFrame < animationLength * 3)
 				{
 					texturePos = { 405, 71, 32, 32 };
 				}
-				else if (animationFrame < 20)
+				else if (animationFrame < animationLength * 4)
 				{
 					texturePos = { 437, 71, 32, 32 };
 				}
-				else if (animationFrame < 25)
+				else if (animationFrame < animationLength * 5)
 				{
 					texturePos = { 469, 71, 32, 32 };
 				}
-				else if (animationFrame < 30)
+				else if (animationFrame < animationLength * 6)
 				{
 					texturePos = { 501, 71, 32, 32 };
 				}
-				else if (animationFrame < 35)
+				else if (animationFrame < animationLength * 7)
 				{
 					texturePos = { 533, 71, 32, 32 };
 				}
-				else if (animationFrame < 40)
+				else if (animationFrame < animationLength * 8)
 				{
 					texturePos = { 565, 71, 32, 32 };
 				}
-				else if (animationFrame < 45)
+				else if (animationFrame < animationLength * 9)
 				{
 					texturePos = { 597, 71, 32, 32 };
 				}
-				else if (animationFrame < 50)
+				else if (animationFrame < animationLength * 10)
 				{
 					texturePos = { 629, 71, 32, 32 };
 				}
@@ -446,43 +408,43 @@ void Player::draw(SDL_Renderer ** _renderer)
 			}
 			case SOUTH:
 			{
-				if (animationFrame < 5)
+				if (animationFrame < animationLength)
 				{
 					texturePos = { 8, 71, 32, 32 };
 				}
-				else if (animationFrame < 10)
+				else if (animationFrame < animationLength * 2)
 				{
 					texturePos = { 40, 71, 32, 32 };
 				}
-				else if (animationFrame < 15)
+				else if (animationFrame < animationLength * 3)
 				{
 					texturePos = { 72, 71, 32, 32 };
 				}
-				else if (animationFrame < 20)
+				else if (animationFrame < animationLength * 4)
 				{
 					texturePos = { 104, 71, 32, 32 };
 				}
-				else if (animationFrame < 25)
+				else if (animationFrame < animationLength * 5)
 				{
 					texturePos = { 136, 71, 32, 32 };
 				}
-				else if (animationFrame < 30)
+				else if (animationFrame < animationLength * 6)
 				{
 					texturePos = { 168, 71, 32, 32 };
 				}
-				else if (animationFrame < 35)
+				else if (animationFrame < animationLength * 7)
 				{
 					texturePos = { 200, 71, 32, 32 };
 				}
-				else if (animationFrame < 40)
+				else if (animationFrame < animationLength * 8)
 				{
 					texturePos = { 232, 71, 32, 32 };
 				}
-				else if (animationFrame < 45)
+				else if (animationFrame < animationLength * 9)
 				{
 					texturePos = { 264, 71, 32, 32 };
 				}
-				else if (animationFrame < 50)
+				else if (animationFrame < animationLength * 10)
 				{
 					texturePos = { 296, 71, 32, 32 };
 				}
@@ -492,54 +454,6 @@ void Player::draw(SDL_Renderer ** _renderer)
 				}
 				break;
 			}
-			case WEST:
-			{
-				if (animationFrame < 5)
-				{
-					texturePos = { 341, 71, 32, 32 };
-				}
-				else if (animationFrame < 10)
-				{
-					texturePos = { 373, 71, 32, 32 };
-				}
-				else if (animationFrame < 15)
-				{
-					texturePos = { 405, 71, 32, 32 };
-				}
-				else if (animationFrame < 20)
-				{
-					texturePos = { 437, 71, 32, 32 };
-				}
-				else if (animationFrame < 25)
-				{
-					texturePos = { 469, 71, 32, 32 };
-				}
-				else if (animationFrame < 30)
-				{
-					texturePos = { 501, 71, 32, 32 };
-				}
-				else if (animationFrame < 35)
-				{
-					texturePos = { 533, 71, 32, 32 };
-				}
-				else if (animationFrame < 40)
-				{
-					texturePos = { 565, 71, 32, 32 };
-				}
-				else if (animationFrame < 45)
-				{
-					texturePos = { 597, 71, 32, 32 };
-				}
-				else if (animationFrame < 50)
-				{
-					texturePos = { 629, 71, 32, 32 };
-				}
-				else
-				{
-					animationFrame = 0;
-				}
-				break;
-			}		
 		}
 		break;
 	}
@@ -551,6 +465,7 @@ void Player::draw(SDL_Renderer ** _renderer)
 			{
 				break;
 			}
+			case WEST:
 			case EAST:
 			{
 				break;
@@ -559,80 +474,159 @@ void Player::draw(SDL_Renderer ** _renderer)
 			{
 				break;
 			}
-			case WEST:
-			{
-				break;
-			}		
 		}
 		break;
 	}
 	case ATTACKING:
 	{
+		int animationLength = 2;
+
 		switch (direction)
 		{
 			case NORTH:
 			{
-				break;
-			}
-			case EAST:
-			{
-				break;
-			}
-			case SOUTH:
-			{
-				if (animationFrame < 3)
+				if (animationFrame < animationLength)
 				{
-					texturePos = { 8, 341, 32, 32 };
+					texturePos = { 719, 342, 32, 32 };
 				}
-				else if (animationFrame < 6)
+				else if (animationFrame < animationLength * 2)
 				{
-					texturePos = { 40, 341, 32, 32 };
+					texturePos = { 751, 342, 32, 32 };
 				}
-				else if (animationFrame < 9)
+				else if (animationFrame < animationLength * 3)
 				{
-					texturePos = { 72, 341, 32, 32 };
+					texturePos = { 783, 342, 32, 32 };
 				}
-				else if (animationFrame < 12)
+				else if (animationFrame < animationLength * 4)
 				{
-					texturePos = { 104, 341, 32, 32 };
+					texturePos = { 815, 342, 32, 32 };
 				}
-				else if (animationFrame < 15)
+				else if (animationFrame < animationLength * 5)
 				{
-					texturePos = { 136, 341, 32, 32 };
+					texturePos = { 847, 342, 32, 32 };
 				}
-				else if (animationFrame < 18)
+				else if (animationFrame < animationLength * 6)
 				{
-					texturePos = { 168, 341, 32, 32 };
+					texturePos = { 879, 342, 32, 32 };
 				}
-				else if (animationFrame < 21)
+				else if (animationFrame < animationLength * 7)
 				{
-					texturePos = { 200, 341, 32, 32 };
+					texturePos = { 911, 342, 32, 32 };
 				}
-				else if (animationFrame < 24)
+				else if (animationFrame < animationLength * 8)
 				{
-					texturePos = { 232, 341, 32, 32 };
+					texturePos = { 943, 342, 32, 32 };
 				}
-				else if (animationFrame < 27)
+				else if (animationFrame < animationLength * 9)
 				{
-					texturePos = { 264, 341, 32, 32 };
+					texturePos = { 975, 342, 32, 32 };
 				}
-				else if (animationFrame < 30)
+				else if (animationFrame < animationLength * 10)
 				{
-					texturePos = { 296, 341, 32, 32 };
+					texturePos = { 1007, 342, 32, 32 };
 				}
-				else if (animationFrame < 33)
+				else if (animationFrame < animationLength * 11)
 				{
-					texturePos = { 328, 341, 32, 32 };
+					texturePos = { 1039, 342, 32, 32 };
 				}
 				break;
 			}
 			case WEST:
+			case EAST:
 			{
+				if (animationFrame < animationLength)
+				{
+					texturePos = { 375, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 2)
+				{
+					texturePos = { 407, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 3)
+				{
+					texturePos = { 439, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 4)
+				{
+					texturePos = { 471, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 5)
+				{
+					texturePos = { 503, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 6)
+				{
+					texturePos = { 535, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 7)
+				{
+					texturePos = { 567, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 8)
+				{
+					texturePos = { 599, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 9)
+				{
+					texturePos = { 631, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 10)
+				{
+					texturePos = { 663, 342, 32, 32 };
+				}
 				break;
+			}
+			case SOUTH:
+			{
+				if (animationFrame < animationLength)
+				{
+					texturePos = { 8, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 2)
+				{
+					texturePos = { 40, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 3)
+				{
+					texturePos = { 72, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 4)
+				{
+					texturePos = { 104, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 5)
+				{
+					texturePos = { 136, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 6)
+				{
+					texturePos = { 168, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 7)
+				{
+					texturePos = { 200, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 8)
+				{
+					texturePos = { 232, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 9)
+				{
+					texturePos = { 264, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 10)
+				{
+					texturePos = { 296, 342, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 11)
+				{
+					texturePos = { 328, 342, 32, 32 };
+				}
+				break;
+			}
 			}		
 		}
 		break;
-	}
 	}
 	
 	if (animationFrame < 0)
