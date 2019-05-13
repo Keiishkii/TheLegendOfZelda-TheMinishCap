@@ -1,0 +1,11 @@
+//Map
+#Map RoyalCrypt
+
+//Player Status
+#MaxHearts 40
+#Hearts 40
+
+
+//Invetory
+#Bombs 20
+#Arrows 20

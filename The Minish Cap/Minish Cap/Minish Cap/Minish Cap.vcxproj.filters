@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{ab7815fa-333a-4c66-b751-3af326a6bb09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{a45b63e8-46ad-4b4c-ae9c-a95aaa3e6fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameStates">
+      <UniqueIdentifier>{5ec6af67-f86b-4ef3-abfe-9e7e58cf3228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameStates">
+      <UniqueIdentifier>{ac90f777-daee-4835-beaf-10744fa62e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{afd77c8a-94e3-4b41-89a7-cd6f52b4df14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\ParticleEffects">
+      <UniqueIdentifier>{93ac5c56-9a19-48a8-9a5e-b61f4831328b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{221ddfb0-898e-4e09-b676-23d87a860579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\ParticleEffects">
+      <UniqueIdentifier>{4f98f630-a8b7-4f37-a008-08d157c22acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\UI%27s">
+      <UniqueIdentifier>{0884430c-362a-484c-8f82-33869a6607c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\UI%27s">
+      <UniqueIdentifier>{1d53d716-42cd-41ab-9b65-1222ccabc5f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Backgrounds">
+      <UniqueIdentifier>{3273820d-69c3-4518-b1cb-4a155655984a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Backgrounds">
+      <UniqueIdentifier>{63582c8f-3a99-4399-8b4a-24b77d0e7649}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameData">
+      <UniqueIdentifier>{11a0d3f4-8ade-4c3c-8691-5d97e7914eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameData">
+      <UniqueIdentifier>{3c166d09-f34f-4aaf-817c-ce229ab2eb47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Entities">
+      <UniqueIdentifier>{d09dfff0-550d-4172-8f12-2606702d1df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Enities">
+      <UniqueIdentifier>{acba90e8-3302-45f1-b088-a0f24ea06c92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameplayState.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenLightRays.h">
+      <Filter>Header Files\GameObjects\ParticleEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenSword.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenPressAnyButton.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenFont.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenState.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSelectState.h">
+      <Filter>Header Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSelectBackground.h">
+      <Filter>Header Files\GameObjects\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSelectUI.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSelectCursor.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSelectUINumber.h">
+      <Filter>Header Files\GameObjects\UI%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveFileManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveFile.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\GameObjects\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionBox.h">
+      <Filter>Header Files\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameplayState.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenLightRays.cpp">
+      <Filter>Source Files\GameObjects\ParticleEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenSword.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenPressAnyButton.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenFont.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenState.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSelectState.cpp">
+      <Filter>Source Files\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSelectBackground.cpp">
+      <Filter>Source Files\GameObjects\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSelectUI.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSelectCursor.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSelectUINumber.cpp">
+      <Filter>Source Files\GameObjects\UI%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveFileManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveFile.cpp">
+      <Filter>Source Files\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\GameData</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\GameObjects\Enities</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

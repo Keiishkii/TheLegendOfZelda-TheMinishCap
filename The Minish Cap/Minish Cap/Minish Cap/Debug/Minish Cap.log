@@ -1,0 +1,16 @@
+﻿  Player.cpp
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(102): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(110): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(136): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(140): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(144): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(148): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(158): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(162): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(172): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(176): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Minish Cap.vcxproj -> F:\Project Files\The Minish Cap\Minish Cap\Debug\Minish Cap.exe

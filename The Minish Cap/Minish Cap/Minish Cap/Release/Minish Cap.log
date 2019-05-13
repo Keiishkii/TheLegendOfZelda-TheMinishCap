@@ -1,0 +1,17 @@
+﻿  Player.cpp
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(96): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(130): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(138): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(152): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+f:\project files\the minish cap\minish cap\minish cap\player.cpp(166): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating code
+  5 of 1118 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Minish Cap.vcxproj -> F:\Project Files\The Minish Cap\Minish Cap\Release\Minish Cap.exe

@@ -1,0 +1,23 @@
+//Rooms
+#MapName RoyalCrypt
+#MapSpriteSheet RoyalCrypt
+
+#Room 1 	30 0 1120 608		15 0 560 304
+#Room 2 	318 608 544 448		159 304 272 224
+#Room 3 	278 1056 624 640	139 528 312 320
+#Room 4 	0 1696 1184 768		0 848 592 384
+#Room 5 	320 2464 544 640	160 1232 272 320
+#Room 6 	320 3104 544 384	160 1552 272 192
+-Wall 		0 0 96 384
+-Wall 		0 0 544 128
+-Wall 		0 320 544 64
+-Wall 		448 0 96 384
+-Wall 		96 128 32 32
+-Wall 		96 288 32 32
+-Wall 		416 288 32 32
+-Wall 		416 128 32 32
+
+
+
+#DefaultRoom 6
+#DefaultSpawn 560 3360
