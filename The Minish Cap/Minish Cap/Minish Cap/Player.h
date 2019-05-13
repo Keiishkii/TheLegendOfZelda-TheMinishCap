@@ -32,9 +32,12 @@ private:
 	PlayerState state = IDLE;
 	PlayerDirection direction = SOUTH;
 
+	void rowling();
 	void idle();
 	void walking();
 	void attacking();
+
+	void attackSound();
 
 	void getInput();
 	void processesStates();

@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #include "Debug.h"
 
@@ -78,6 +79,12 @@ void Map::loadFromFile(std::string _mapName)
 			{
 				std::string junk;
 				lineStream >> junk >> mapSpriteSheet;
+			}
+			if (!currentLine.substr(0, 10).compare(0, 10, "#MapMusic "))
+			{
+				std::string junk;
+				lineStream >> junk >> mapMusic; 
+				std::replace(mapMusic.begin(), mapMusic.end(), '-', ' ');
 			}
 			if (!currentLine.substr(0, 13).compare(0, 13, "#DefaultRoom "))
 			{

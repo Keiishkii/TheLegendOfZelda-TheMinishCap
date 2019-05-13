@@ -1,16 +1,18 @@
 ﻿  Player.cpp
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(93): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(101): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(127): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(135): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(149): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(163): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(108): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(134): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(142): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(157): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(172): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(188): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(196): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Generating code
-  1 of 1118 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  0 of 1127 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

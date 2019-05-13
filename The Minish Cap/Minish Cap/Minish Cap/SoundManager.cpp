@@ -19,8 +19,12 @@ bool SoundManager::loadAllAudio()
 		//Load music
 		loadMusic("01 Title Screen.mp3", "01 Title Screen") &&
 		loadMusic("02 File Select.mp3", "02 File Select") &&
+		loadMusic("47 Royal Crypt.mp3", "47 Royal Crypt") &&
 
 		//Load sound
+		loadSound("MC_Link_Sword1.wav", "MC_Link_Sword1") &&
+		loadSound("MC_Link_Sword2.wav", "MC_Link_Sword2") &&
+		loadSound("MC_Link_Sword3.wav", "MC_Link_Sword3") &&
 		loadSound("MC_Emote_Exclaim.wav", "MC_Emote_Exclaim") &&
 		loadSound("MC_Menu_Cursor.wav", "MC_Menu_Cursor") &&
 		loadSound("MC_Menu_Select.wav", "MC_Menu_Select")

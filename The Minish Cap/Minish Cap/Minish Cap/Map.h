@@ -13,6 +13,7 @@ private:
 	std::vector<Room * > roomList;
 	void loadFromFile(std::string _name);
 public:
+	std::string mapMusic = "";
 	int defaultRoom = 0;
 	int defaultX = 0;
 	int defaultY = 0;

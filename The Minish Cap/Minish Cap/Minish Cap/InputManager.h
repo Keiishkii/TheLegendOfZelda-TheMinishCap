@@ -17,6 +17,7 @@ class InputManager
 		bool KeyRightPressed = false;
 
 		bool KeyReturnPressed = false;
+		bool KeySpacePressed = false;
 
 		// KeyDown						(Acitve until release)
 		bool KeyWDown = false;
@@ -30,6 +31,7 @@ class InputManager
 		bool KeyRightDown = false;
 
 		bool KeyReturnDown = false;
+		bool KeySpaceDown = false;
 
 		//KeyRelease					(Active prevous frame)
 		bool KeyWRelease = false;
@@ -43,6 +45,7 @@ class InputManager
 		bool KeyRightRelease = false;
 
 		bool KeyReturnRelease = false;
+		bool KeySpaceRelease = false;
 
 		//MousePressed
 		bool MouseRightClicked = false;

@@ -120,6 +120,15 @@ void InputManager::processInputEvents()
 						}
 						break;
 					}
+					case SDLK_SPACE:
+					{
+						if (!prevousInput.KeySpaceDown)
+						{
+							input.KeySpacePressed = true;
+							input.KeySpaceDown = true;
+						}
+						break;
+					}
 				}
 				break;
 			}
@@ -205,6 +214,15 @@ void InputManager::processInputEvents()
 						{
 							input.KeyReturnRelease = true;
 							input.KeyReturnDown = false;
+						}
+						break;
+					}
+					case SDLK_SPACE:
+					{
+						if (prevousInput.KeySpaceDown)
+						{
+							input.KeySpaceRelease = true;
+							input.KeySpaceDown = false;
 						}
 						break;
 					}

@@ -1,6 +1,7 @@
 //Rooms
 #MapName RoyalCrypt
 #MapSpriteSheet RoyalCrypt
+#MapMusic 47-Royal-Crypt
 
 #Room 1 	30 0 1120 608		15 0 560 304
 #Room 2 	318 608 544 448		159 304 272 224

@@ -20,6 +20,8 @@ void gameLoop(SDL_Window** window, SDL_Renderer** renderer);
 
 int main(int argc, char * argv[])
 {
+	srand(time(NULL));
+
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 

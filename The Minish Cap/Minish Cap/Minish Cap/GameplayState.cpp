@@ -43,6 +43,7 @@ void GameplayState::loadState()
 	loadMap();
 
 	SoundManager::stopMusic();
+	SoundManager::playLoopedMusic(currentMap->mapMusic);
 }
 
 void GameplayState::update()

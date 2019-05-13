@@ -4,6 +4,7 @@
 
 #include "TextureManager.h"
 #include "InputManager.h"
+#include "SoundManager.h"
 
 Player::Player(SDL_Rect _pos) : GameObject(_pos)
 {
@@ -53,6 +54,12 @@ void Player::processesStates()
 		{
 			currentSpeed = 2;
 			walking();
+			break;
+		}
+		case ROWLING:
+		{
+			currentSpeed = 5;
+			rowling();
 			break;
 		}
 		case ATTACKING:
@@ -143,6 +150,7 @@ void Player::walking()
 	}
 	case EAST:
 	{
+		yVelocity = 0;
 		xVelocity = 1;
 
 		collisionBox.y = defaultCollisionBox.y + position.y;
@@ -157,6 +165,7 @@ void Player::walking()
 	}
 	case WEST:
 	{
+		yVelocity = 0;
 		xVelocity = -1;
 
 		collisionBox.y = defaultCollisionBox.y + position.y;
@@ -169,6 +178,26 @@ void Player::walking()
 
 		break;
 	}
+	}
+}
+
+void Player::rowling()
+{
+	float inputSpeed = sqrt(pow(xVelocity, 2) + pow(yVelocity, 2));
+	collisionBox.y = defaultCollisionBox.y + position.y;
+	collisionBox.x = defaultCollisionBox.x + position.x + ((xVelocity / inputSpeed) * currentSpeed);
+
+	if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+	{
+		xPos += ((xVelocity / inputSpeed) * currentSpeed);
+	}
+
+	collisionBox.x = defaultCollisionBox.x + position.x;
+	collisionBox.y = defaultCollisionBox.y + position.y + ((yVelocity / inputSpeed) * currentSpeed);
+
+	if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+	{
+		yPos += ((yVelocity / inputSpeed) * currentSpeed);
 	}
 }
 
@@ -197,6 +226,7 @@ void Player::getInput()
 		{
 			if (InputManager::input.MouseLeftClicked)
 			{
+				attackSound();
 				state = ATTACKING;
 			}
 			else if (InputManager::input.KeyWDown || InputManager::input.KeyUpDown)
@@ -225,7 +255,13 @@ void Player::getInput()
 		{
 			if (InputManager::input.MouseLeftClicked)
 			{
+				attackSound();
 				state = ATTACKING;
+			}
+			else if (InputManager::input.KeySpacePressed)
+			{
+				attackSound();
+				state = ROWLING;
 			}
 			else if (InputManager::input.KeyWDown || InputManager::input.KeyUpDown)
 			{
@@ -255,6 +291,7 @@ void Player::getInput()
 
 			if (InputManager::input.MouseLeftClicked)
 			{
+				attackSound();
 				animationFrame = 0;
 			}
 			else if (direction == WEST || direction == EAST)
@@ -266,10 +303,35 @@ void Player::getInput()
 				state = IDLE;
 			break;
 		}
+		case ROWLING:
+		{
+			int animationLength = 3;
+
+			if (direction == WEST || direction == EAST)
+			{
+				if (animationFrame >= animationLength * 7)
+					state = IDLE;
+			}
+			else if (animationFrame >= animationLength * 8)
+				state = IDLE;
+			break;
+		}
 	}
 
 	if (state != prevousState)
 		animationFrame = 0;
+}
+
+void Player::attackSound()
+{
+	int random = rand() % 100;
+
+	if (random < 33)
+		SoundManager::playSound("MC_Link_Sword1");
+	else if (random < 66)
+		SoundManager::playSound("MC_Link_Sword2");
+	else
+		SoundManager::playSound("MC_Link_Sword3");
 }
 
 void Player::draw(SDL_Renderer ** _renderer)
@@ -459,19 +521,113 @@ void Player::draw(SDL_Renderer ** _renderer)
 	}
 	case ROWLING:
 	{
+		int animationLength = 3;
+
 		switch (direction)
 		{
 			case NORTH:
 			{
+				if (animationFrame < animationLength)
+				{
+					texturePos = { 528, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 2)
+				{
+					texturePos = { 560, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 3)
+				{
+					texturePos = { 592, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 4)
+				{
+					texturePos = { 624, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 5)
+				{
+					texturePos = { 656, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 6)
+				{
+					texturePos = { 688, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 7)
+				{
+					texturePos = { 720, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 8)
+				{
+					texturePos = { 752, 1100, 32, 32 };
+				}
 				break;
 			}
 			case WEST:
 			case EAST:
 			{
+				if (animationFrame < animationLength)
+				{
+					texturePos = { 284, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 2)
+				{
+					texturePos = { 316, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 3)
+				{
+					texturePos = { 348, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 4)
+				{
+					texturePos = { 380, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 5)
+				{
+					texturePos = { 412, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 6)
+				{
+					texturePos = { 444, 1100, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 7)
+				{
+					texturePos = { 476, 1100, 32, 32 };
+				}
 				break;
 			}
 			case SOUTH:
 			{
+				if (animationFrame < animationLength)
+				{
+					texturePos = { 12, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 2)
+				{
+					texturePos = { 44, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 3)
+				{
+					texturePos = { 76, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 4)
+				{
+					texturePos = { 108, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 5)
+				{
+					texturePos = { 140, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 6)
+				{
+					texturePos = { 172, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 7)
+				{
+					texturePos = { 204, 1097, 32, 32 };
+				}
+				else if (animationFrame < animationLength * 8)
+				{
+					texturePos = { 236, 1097, 32, 32 };
+				}
 				break;
 			}
 		}
