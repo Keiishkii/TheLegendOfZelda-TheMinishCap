@@ -4,7 +4,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "Debug.h"
+#include "Pot.h"
 
 Map::Map(std::string _path)
 {
@@ -26,6 +26,8 @@ void Map::loadFromFile(std::string _mapName)
 	std::string mapSpriteSheet;
 
 	Room * currentRoom = nullptr;
+	int currentRoomPositionX = 0;
+	int currentRoomPositionY = 0;
 
 	if (stream.is_open())
 	{
@@ -45,7 +47,7 @@ void Map::loadFromFile(std::string _mapName)
 				int yPos;
 				int width;
 				int height;
-
+				
 				int textureXPos;
 				int textureYPos;
 				int textureWidth;
@@ -53,7 +55,10 @@ void Map::loadFromFile(std::string _mapName)
 
 				lineStream >> junk >> room >> xPos >> yPos >> width >> height >> textureXPos >> textureYPos >> textureWidth >> textureHeight;
 
-				currentRoom = new Room(SDL_Rect{ xPos, yPos, width, height }, SDL_Rect{ textureXPos, textureYPos, textureWidth, textureHeight }, "", BACKGROUND, room);
+				currentRoomPositionX = xPos;
+				currentRoomPositionY = yPos;
+
+				currentRoom = new Room(SDL_Rect{ xPos, yPos, width, height }, SDL_Rect{ textureXPos, textureYPos, textureWidth, textureHeight }, "", TAG_BACKGROUND, room);
 
 				roomList.push_back(currentRoom);
 			}
@@ -69,6 +74,19 @@ void Map::loadFromFile(std::string _mapName)
 				lineStream >> junk >> xPos >> yPos >> width >> height;
 
 				currentRoom->addWall(SDL_Rect{ xPos, yPos, width, height });
+			}
+			if (!currentLine.substr(0, 5).compare(0, 5, "-Pot "))
+			{
+				std::string junk;
+
+				int xPos;
+				int yPos;
+				int width;
+				int height;
+
+				lineStream >> junk >> xPos >> yPos >> width >> height;
+
+				currentRoom->addRespawning(new Pot(SDL_Rect{ xPos + currentRoomPositionX, yPos + currentRoomPositionY, width, height }, SDL_Rect{ 0, 0, 16, 16 }, "Pot", TAG_GROUND_ENTITY));
 			}
 			if (!currentLine.substr(0, 9).compare(0, 9, "#MapName "))
 			{

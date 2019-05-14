@@ -29,6 +29,11 @@ private:
 
 	int animationFrame;
 
+	bool invunrable = false;
+	int invunrabiltyFrames = 0;
+
+	int health;
+
 	PlayerState state = IDLE;
 	PlayerDirection direction = SOUTH;
 
@@ -39,6 +44,8 @@ private:
 
 	void attackSound();
 
+	void damageCheck();
+
 	void getInput();
 	void processesStates();
 public:
@@ -48,6 +55,7 @@ public:
 
 	void draw(SDL_Renderer ** _renderer);
 	void update();
+	void lateUpdate();
 };
 
 #endif // !PLAYER

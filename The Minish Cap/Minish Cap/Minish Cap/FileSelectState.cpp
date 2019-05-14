@@ -28,7 +28,7 @@ void FileSelect::loadState()
 	// Background Image
 	addObjectToList(new FileSelectBackground(SDL_Rect{ 0, 0, 480, 320 }));
 	// UI
-	addObjectToList(new GameObject(SDL_Rect{ 10, 0, 324, 46 }, SDL_Rect{ 1, 2, 162, 23 }, "FileSelectScreen", UI));
+	addObjectToList(new GameObject(SDL_Rect{ 10, 0, 324, 46 }, SDL_Rect{ 1, 2, 162, 23 }, "FileSelectScreen", TAG_UI));
 
 	addObjectToList(new FileSelectUI(SDL_Rect{ 60, 56, 138, 52 }, 0));
 	addObjectToList(new FileSelectUI(SDL_Rect{ 60, 120, 138, 52 }, 1));
@@ -40,7 +40,7 @@ void FileSelect::loadState()
 	addObjectToList(new FileSelectUINumber(SDL_Rect{ 42, 138, 16, 16 }, 1));
 	addObjectToList(new FileSelectUINumber(SDL_Rect{ 42, 202, 16, 16 }, 2));
 
-	addObjectToList(new GameObject(SDL_Rect{ 214, 68, 216, 152 }, SDL_Rect{ 81, 32, 108, 76 }, "FileSelectScreen", UI, 0, 100));
+	addObjectToList(new GameObject(SDL_Rect{ 214, 68, 216, 152 }, SDL_Rect{ 81, 32, 108, 76 }, "FileSelectScreen", TAG_UI, 0, 100));
 
 	displayFileContent();
 
@@ -171,23 +171,23 @@ void FileSelect::displayFileContent()
 
 		if (heartTexture >= 4)
 		{
-			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 2, 156, 9, 8 }, "FileSelectScreen", UI, 1));
+			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 2, 156, 9, 8 }, "FileSelectScreen", TAG_UI, 1));
 		}
 		else if (heartTexture == 3)
 		{
-			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 13, 156, 9, 8 }, "FileSelectScreen", UI, 1));
+			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 13, 156, 9, 8 }, "FileSelectScreen", TAG_UI, 1));
 		}
 		else if (heartTexture == 2)
 		{
-			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 24, 156, 9, 8 }, "FileSelectScreen", UI, 1));
+			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 24, 156, 9, 8 }, "FileSelectScreen", TAG_UI, 1));
 		}
 		else if (heartTexture == 1)
 		{
-			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 35, 156, 9, 8 }, "FileSelectScreen", UI, 1));
+			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 35, 156, 9, 8 }, "FileSelectScreen", TAG_UI, 1));
 		}
 		else if (heartTexture <= 0)
 		{
-			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 46, 156, 9, 8 }, "FileSelectScreen", UI, 1));
+			addObjectToList(new GameObject(SDL_Rect{ 242 + (i * 16) + ((((i) / 10) % 2) * -160), 162 + ((((i) / 10) % 2) * 16), 18, 16 }, SDL_Rect{ 46, 156, 9, 8 }, "FileSelectScreen", TAG_UI, 1));
 		}
 	}
 }

@@ -15,9 +15,9 @@ private:
 
 	static bool loadSound(std::string _path, std::string _name);
 	static bool loadMusic(std::string _path, std::string _name);
-
 public:
 	static bool loadAllAudio();
+	static void unloadAllAudio();
 
 	static void playSound(std::string _name);
 	static void playMusic(std::string _name);

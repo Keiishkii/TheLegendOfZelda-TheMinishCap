@@ -4,7 +4,7 @@
 
 FileSelectBackground::FileSelectBackground(SDL_Rect _pos) : GameObject(_pos)
 {
-	renderTag = BACKGROUND;
+	renderTag = TAG_BACKGROUND;
 	texturePos = { 2, 668, 240, 160 };
 	textureName = "FileSelectScreen";
 }

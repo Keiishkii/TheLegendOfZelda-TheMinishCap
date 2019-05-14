@@ -5,6 +5,8 @@
 #include "GameManager.h"
 #include "TextureManager.h"
 
+unsigned int GameObject::ID_Counter = 0;
+
 void GameObject::draw(SDL_Renderer ** _renderer)
 {
 	if (textureName != "")

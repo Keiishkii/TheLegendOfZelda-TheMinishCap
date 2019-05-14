@@ -23,7 +23,7 @@ void TitleScreen::loadState()
 
 
 	// Background Image
-	addObjectToList(new GameObject(SDL_Rect{0, 0, 480, 320}, SDL_Rect{ 251, 24, 240, 160}, "TitleScreen", BACKGROUND));
+	addObjectToList(new GameObject(SDL_Rect{0, 0, 480, 320}, SDL_Rect{ 251, 24, 240, 160}, "TitleScreen", TAG_BACKGROUND));
 	// Light Effects
 	addObjectToList(new TitleScreenLightRays(SDL_Rect{ 0, 0, 480, 320 }));
 	// UI

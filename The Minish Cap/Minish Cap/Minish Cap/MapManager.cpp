@@ -17,3 +17,15 @@ Map * MapManager::getMap(std::string _name)
 	}
 	return mapList[_name];
 }
+
+void MapManager::unloadAllMaps()
+{
+	std::map<std::string, Map * >::iterator itr = mapList.begin();
+
+	for (itr = mapList.begin(); itr != mapList.end(); itr++)
+	{
+		delete itr->second;
+	}
+
+	mapList.clear();
+}

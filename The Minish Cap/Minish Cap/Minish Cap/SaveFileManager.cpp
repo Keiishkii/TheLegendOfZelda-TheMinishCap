@@ -9,11 +9,11 @@ SaveFile SaveFileManager::save2;
 void SaveFileManager::loadSaves()
 {
 	save0.loadFileData("Saves/save_0.txt");
-	save0.name = "Save 0";
+	save0.getName() = "Save 0";
 	save1.loadFileData("Saves/save_1.txt");
-	save1.name = "Save 1";
+	save1.getName() = "Save 1";
 	save2.loadFileData("Saves/save_2.txt");
-	save2.name = "Save 2";
+	save2.getName() = "Save 2";
 }
 
 SaveFile * SaveFileManager::getSave(int _saveID)

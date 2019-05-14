@@ -1,4 +1,8 @@
-﻿  Player.cpp
+﻿  Main.cpp
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\main.cpp(25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\main.cpp(53): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\main.cpp(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Player.cpp
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
@@ -12,7 +16,7 @@ d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\mini
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(188): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 d:\git repositories\thelegendofzelda-theminishcap\the minish cap\minish cap\minish cap\player.cpp(196): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Generating code
-  0 of 1127 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  1 of 1127 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

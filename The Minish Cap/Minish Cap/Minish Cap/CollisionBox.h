@@ -21,14 +21,41 @@ enum CollisionOrigin
 	E_ENEMY
 };
 
-class CollisionBox
+class SolidCollider
 {
 public:
+	unsigned int IDGroup;
+
 	SDL_Rect * boxBounds;
 	CollisionType type;
 	CollisionOrigin origin;
 
-	CollisionBox(SDL_Rect * _boxBounds, CollisionType _type, CollisionOrigin _origin) : boxBounds(_boxBounds), type(_type), origin(_origin) {}
+	SolidCollider(SDL_Rect * _boxBounds, CollisionType _type, CollisionOrigin _origin, unsigned int _ID) : boxBounds(_boxBounds), type(_type), origin(_origin), IDGroup(_ID) {}
+};
+
+class TriggerCollider
+{
+public:
+	unsigned int IDGroup;
+
+	SDL_Rect * boxBounds;
+	CollisionType type;
+	CollisionOrigin origin;
+
+	TriggerCollider(SDL_Rect * _boxBounds, CollisionType _type, CollisionOrigin _origin, unsigned int _ID) : boxBounds(_boxBounds), type(_type), origin(_origin), IDGroup(_ID) {}
+};
+
+class DamageCollider
+{
+public:
+	unsigned int IDGroup;
+
+	SDL_Rect boxBounds;
+	CollisionType type;
+	CollisionOrigin origin;
+	int damageValue = 0;
+
+	DamageCollider(SDL_Rect _boxBounds, CollisionType _type, CollisionOrigin _origin, int _damageValue) : boxBounds(_boxBounds), type(_type), origin(_origin), damageValue(_damageValue) {}
 };
 
 #endif // !COLLISIONBOX

@@ -14,6 +14,7 @@ private:
 public:
 	static Map * getMap(std::string _name);
 	static void loadAllMaps();
+	static void unloadAllMaps();
 };
 
 #endif

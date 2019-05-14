@@ -44,8 +44,21 @@ bool TextureManager::loadAllTextures(SDL_Renderer ** _renderer)
 		//Maps
 		loadTexture("Textures/RoyalCryptSpriteSheet.bmp", "RoyalCrypt", _renderer) &&
 		// Entities
+		loadTexture("Textures/Pot.bmp", "Pot", _renderer) &&
 		loadTexture("Textures/LinkSpriteSheet.bmp", "Link", _renderer)
 	);
 
 	return texturesLoaded;
+}
+
+void TextureManager::unloadAllTextures()
+{
+	std::map<std::string, SDL_Texture * >::iterator itr = spriteMapList.begin();
+
+	for (itr = spriteMapList.begin(); itr != spriteMapList.end(); itr++)
+	{
+		delete itr->second;
+	}
+
+	spriteMapList.clear();
 }

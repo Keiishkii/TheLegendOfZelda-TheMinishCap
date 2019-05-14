@@ -12,6 +12,6 @@ void Room::addRoomCollisions()
 		wall->x += position.x;
 		wall->y += position.y;
 
-		CollisionManager::addSolidCollider(new CollisionBox(wall, UNIVERSAL, E_UNASIGNED));
+		CollisionManager::addSolidCollider(new SolidCollider(wall, UNIVERSAL, E_UNASIGNED, ID));
 	}
 }

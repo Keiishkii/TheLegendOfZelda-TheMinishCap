@@ -13,13 +13,14 @@
 
 #include "TitleScreenState.h"
 
-
-
 bool initialistion(SDL_Window** window, SDL_Renderer** renderer);
 void gameLoop(SDL_Window** window, SDL_Renderer** renderer);
+void programExit();
 
 int main(int argc, char * argv[])
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	srand(time(NULL));
 
 	SDL_Window* window;
@@ -30,8 +31,21 @@ int main(int argc, char * argv[])
 		TitleScreen::loadState();
 		gameLoop(&window, &renderer);
 	}
-
+	
+	programExit();
+	
 	return 0;
+}
+
+void programExit()
+{
+	SDL_Quit();
+
+	//TextureManager::unloadAllTextures();
+	//SoundManager::unloadAllAudio();
+	//MapManager::unloadAllMaps();
+	//delete GameManager::loadedSave;
+
 }
 
 void gameLoop(SDL_Window** window, SDL_Renderer** renderer)

@@ -7,7 +7,7 @@
 
 TitleScreenLightRays::TitleScreenLightRays(SDL_Rect _pos) : GameObject(_pos)
 {
-	renderTag = BACKGROUND_PARTICLES;
+	renderTag = TAG_BACKGROUND_PARTICLES;
 	texturePos = {6, 24, 240, 160};
 	textureName = "TitleScreen";
 }

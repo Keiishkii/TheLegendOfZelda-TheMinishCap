@@ -6,7 +6,7 @@
 TitleScreenFont::TitleScreenFont(SDL_Rect _pos) : GameObject(_pos)
 {
 	opacity = 0;
-	renderTag = UI;
+	renderTag = TAG_UI;
 	texturePos = { 285, 447, 167, 88};
 	textureName = "TitleScreen";
 }

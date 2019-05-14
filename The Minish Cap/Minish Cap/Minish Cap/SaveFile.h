@@ -5,7 +5,7 @@
 
 class SaveFile
 {
-public:
+private:
 	std::string name;
 	std::string map;
 
@@ -19,6 +19,9 @@ public:
 public:
 	void loadFileData(std::string _saveName);
 	void saveFileData(std::string _saveName);
+
+	std::string getName() { return name; }
+	std::string getMap() { return map; }
 
 	int getMaxHealth() { return maxHearts; }
 	int getCurrentHealth() { return hearts; }

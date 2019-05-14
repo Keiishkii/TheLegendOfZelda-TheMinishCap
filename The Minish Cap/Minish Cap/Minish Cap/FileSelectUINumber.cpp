@@ -5,7 +5,7 @@
 
 FileSelectUINumber::FileSelectUINumber(SDL_Rect _pos, int _fileID) : GameObject(_pos)
 {
-	renderTag = UI;
+	renderTag = TAG_UI;
 	fileID = _fileID;
 	texturePos = { 2, 62, 69, 26 };
 	textureName = "FileSelectScreen";

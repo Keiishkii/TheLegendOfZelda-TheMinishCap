@@ -8,36 +8,63 @@
 
 Player::Player(SDL_Rect _pos) : GameObject(_pos)
 {
-	renderTag = ENTITY;
+	renderTag = TAG_ENTITY;
 
 	animationFrame = 0;
 	
-	int collisionWidth = 30;
-	int collisionHeight = 22;
+	int collisionWidth = 18;
+	int collisionHeight = 32;
 
 	xPos = position.x;
 	yPos = position.y;
 
-	defaultCollisionBox = SDL_Rect{18, 24, collisionWidth, collisionHeight };
+	defaultCollisionBox = SDL_Rect{24, 24, collisionWidth, collisionHeight };
 	collisionBox = defaultCollisionBox;
 	
 	collisionBox.x = defaultCollisionBox.x + position.x;
 	collisionBox.y = defaultCollisionBox.y + position.y;
 
-	CollisionManager::addSolidCollider(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER));
+	CollisionManager::addSolidCollider(new SolidCollider(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER, ID));
 
 	textureName = "Link";
 	texturePos = SDL_Rect{ 8, 3, 32, 32 };
 }
 
-
 void Player::update()
 {
 	getInput();
+
 	processesStates();
 
 	position.x = xPos;
 	position.y = yPos;
+}
+
+void Player::lateUpdate()
+{
+	damageCheck();
+}
+
+void Player::damageCheck()
+{
+	int healthChange;
+
+	if (!invunrable)
+	{
+		if (CollisionManager::checkDamageColliders(SDL_Rect(collisionBox), E_PLAYER, &healthChange))
+		{
+			invunrable = true;
+		}
+	}
+	else if (invunrabiltyFrames < 60)
+	{
+		invunrabiltyFrames++;
+	}
+	else
+	{
+		invunrable = false;
+		invunrabiltyFrames = 0;
+	}
 }
 
 void Player::processesStates()
@@ -99,7 +126,7 @@ void Player::walking()
 		collisionBox.y = defaultCollisionBox.y + position.y;
 		collisionBox.x = defaultCollisionBox.x + position.x + ((xVelocity / inputSpeed) * currentSpeed);
 		
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			xPos += ((xVelocity / inputSpeed) * currentSpeed);
 		}
@@ -107,7 +134,7 @@ void Player::walking()
 		collisionBox.x = defaultCollisionBox.x + position.x;
 		collisionBox.y = defaultCollisionBox.y + position.y + ((yVelocity / inputSpeed) * currentSpeed);
 
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			yPos += ((yVelocity / inputSpeed) * currentSpeed);
 		}
@@ -133,7 +160,7 @@ void Player::walking()
 		collisionBox.y = defaultCollisionBox.y + position.y;
 		collisionBox.x = defaultCollisionBox.x + position.x + ((xVelocity / inputSpeed) * currentSpeed);
 
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			xPos += ((xVelocity / inputSpeed) * (currentSpeed));
 		}
@@ -141,7 +168,7 @@ void Player::walking()
 		collisionBox.x = defaultCollisionBox.x + position.x;
 		collisionBox.y = defaultCollisionBox.y + position.y + ((yVelocity / inputSpeed) * currentSpeed);
 
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			yPos += ((yVelocity / inputSpeed) * currentSpeed);
 		}
@@ -155,8 +182,8 @@ void Player::walking()
 
 		collisionBox.y = defaultCollisionBox.y + position.y;
 		collisionBox.x = defaultCollisionBox.x + position.x + (xVelocity * currentSpeed);
-		
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			xPos += (xVelocity * currentSpeed);
 		}
@@ -171,7 +198,7 @@ void Player::walking()
 		collisionBox.y = defaultCollisionBox.y + position.y;
 		collisionBox.x = defaultCollisionBox.x + position.x + (xVelocity * currentSpeed);
 
-		if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+		if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 		{
 			xPos += (xVelocity * currentSpeed);
 		}
@@ -187,7 +214,7 @@ void Player::rowling()
 	collisionBox.y = defaultCollisionBox.y + position.y;
 	collisionBox.x = defaultCollisionBox.x + position.x + ((xVelocity / inputSpeed) * currentSpeed);
 
-	if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+	if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 	{
 		xPos += ((xVelocity / inputSpeed) * currentSpeed);
 	}
@@ -195,7 +222,7 @@ void Player::rowling()
 	collisionBox.x = defaultCollisionBox.x + position.x;
 	collisionBox.y = defaultCollisionBox.y + position.y + ((yVelocity / inputSpeed) * currentSpeed);
 
-	if (!CollisionManager::checkSolidColliders(new CollisionBox(&collisionBox, UNIVERSAL_BUT_PLAYER, E_PLAYER)))
+	if (!CollisionManager::checkSolidColliders(collisionBox, E_PLAYER))
 	{
 		yPos += ((yVelocity / inputSpeed) * currentSpeed);
 	}
@@ -203,15 +230,181 @@ void Player::rowling()
 
 void Player::attacking()
 {
+	int animationLength = 2;
+
+	SDL_Rect collider = { 0, 0, 16, 16 };
+
+	collider.x = defaultCollisionBox.x + position.x + (defaultCollisionBox.x / 2);
+	collider.y = defaultCollisionBox.y + position.y + (defaultCollisionBox.y / 2);
+
 	switch (direction)
 	{
 	case NORTH:
+		if (animationFrame < animationLength)
+		{
+			collider.x += 21;
+			collider.y += -19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 2)
+		{
+			collider.x += 17;
+			collider.y += -21;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 3)
+		{
+			collider.x += 13;
+			collider.y += -23;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 4)
+		{
+			collider.x += 9;
+			collider.y += -24;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 5)
+		{
+			collider.x += 5;
+			collider.y += -25;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 6)
+		{
+			collider.x += 1;
+			collider.y += -26;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 7)
+		{
+			collider.x += -3;
+			collider.y += -25;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 8)
+		{
+			collider.x += -7;
+			collider.y += -24;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 9)
+		{
+			collider.x += -11;
+			collider.y += -23;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 10)
+		{
+			collider.x += -15;
+			collider.y += -21;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
+		else if (animationFrame < animationLength * 11)
+		{
+			collider.x += -19;
+			collider.y += -19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
+		}
 		break;
 	case EAST:
+		if (animationFrame < animationLength)
+		{
+		}
+		else if (animationFrame < animationLength * 2)
+		{
+		}
+		else if (animationFrame < animationLength * 3)
+		{
+		}
+		else if (animationFrame < animationLength * 4)
+		{
+		}
+		else if (animationFrame < animationLength * 5)
+		{
+		}
+		else if (animationFrame < animationLength * 6)
+		{
+		}
+		else if (animationFrame < animationLength * 7)
+		{
+		}
+		else if (animationFrame < animationLength * 8)
+		{
+		}
+		else if (animationFrame < animationLength * 9)
+		{
+		}
+		else if (animationFrame < animationLength * 10)
+		{
+		}
 		break;
 	case SOUTH:
+		if (animationFrame < animationLength)
+		{
+		}
+		else if (animationFrame < animationLength * 2)
+		{
+		}
+		else if (animationFrame < animationLength * 3)
+		{
+		}
+		else if (animationFrame < animationLength * 4)
+		{
+		}
+		else if (animationFrame < animationLength * 5)
+		{
+		}
+		else if (animationFrame < animationLength * 6)
+		{
+		}
+		else if (animationFrame < animationLength * 7)
+		{
+		}
+		else if (animationFrame < animationLength * 8)
+		{
+		}
+		else if (animationFrame < animationLength * 9)
+		{
+		}
+		else if (animationFrame < animationLength * 10)
+		{
+		}
+		else if (animationFrame < animationLength * 11)
+		{
+		}
 		break;
 	case WEST:
+		if (animationFrame < animationLength)
+		{
+		}
+		else if (animationFrame < animationLength * 2)
+		{
+		}
+		else if (animationFrame < animationLength * 3)
+		{
+		}
+		else if (animationFrame < animationLength * 4)
+		{
+		}
+		else if (animationFrame < animationLength * 5)
+		{
+		}
+		else if (animationFrame < animationLength * 6)
+		{
+		}
+		else if (animationFrame < animationLength * 7)
+		{
+		}
+		else if (animationFrame < animationLength * 8)
+		{
+		}
+		else if (animationFrame < animationLength * 9)
+		{
+		}
+		else if (animationFrame < animationLength * 10)
+		{
+		}
 		break;
 	}
 }

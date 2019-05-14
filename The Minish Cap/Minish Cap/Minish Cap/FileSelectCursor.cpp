@@ -6,7 +6,7 @@
 FileSelectCursor::FileSelectCursor(SDL_Rect _pos) : GameObject(_pos)
 {
 	animationFrame = 0;
-	renderTag = UI;
+	renderTag = TAG_UI;
 	texturePos = { 2, 62, 69, 26 };
 	textureName = "FileSelectScreen";
 }

@@ -12,6 +12,7 @@ private:
 	static bool loadTexture(std::string _path, std::string _name, SDL_Renderer ** _renderer);
 public:
 	static bool loadAllTextures(SDL_Renderer ** _renderer);
+	static void unloadAllTextures();
 	static SDL_Texture * getTexture(std::string _name);
 };
 

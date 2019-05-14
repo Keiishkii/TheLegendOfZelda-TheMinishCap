@@ -5,7 +5,7 @@
 TitleScreenSword::TitleScreenSword(SDL_Rect _pos) : GameObject(_pos)
 {
 	opacity = 255;
-	renderTag = UI;
+	renderTag = TAG_UI;
 	texturePos = { 273, 236, 191, 98};
 	textureName = "TitleScreen";
 }

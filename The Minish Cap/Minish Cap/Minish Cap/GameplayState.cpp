@@ -6,10 +6,12 @@
 #include "GameManager.h"
 #include "MapManager.h"
 #include "InputManager.h"
+#include "InventoryManager.h"
 
 #include "Camera.h"
 
 std::vector<GameObject * > GameplayState::objectList;
+std::vector<int> GameplayState::objectToRemove;
 
 Map * GameplayState::currentMap = nullptr;
 
@@ -27,9 +29,9 @@ void GameplayState::loadState()
 	{
 		if (GameManager::loadedSave != nullptr)
 		{
-			currentMap = MapManager::getMap((*GameManager::loadedSave).map);
-			prevousRoom = (*MapManager::getMap((*GameManager::loadedSave).map)).defaultRoom;
-			currentRoom = (*MapManager::getMap((*GameManager::loadedSave).map)).defaultRoom;
+			currentMap = MapManager::getMap((*GameManager::loadedSave).getMap());
+			prevousRoom = (*MapManager::getMap((*GameManager::loadedSave).getMap())).defaultRoom;
+			currentRoom = (*MapManager::getMap((*GameManager::loadedSave).getMap())).defaultRoom;
 		}
 	}
 
@@ -40,6 +42,19 @@ void GameplayState::loadState()
 	
 	addObjectToList(player);
 
+	std::vector<GameObject * >::iterator itr = (*currentMap->getRoomList()->at(currentRoom - 1)->getRespawning()).begin();
+
+	for (itr = (*currentMap->getRoomList()->at(currentRoom - 1)->getRespawning()).begin(); itr < (*currentMap->getRoomList()->at(currentRoom - 1)->getRespawning()).end(); itr++)
+	{
+		addObjectToList(*itr);
+	}
+
+	InventoryManager::maxHealth = GameManager::loadedSave->getMaxHealth();
+	InventoryManager::currentHealth = GameManager::loadedSave->getCurrentHealth();
+	InventoryManager::rupees = GameManager::loadedSave->getRupees();
+	InventoryManager::bombs = GameManager::loadedSave->getBombs();
+	InventoryManager::arrows = GameManager::loadedSave->getArrows();
+
 	loadMap();
 
 	SoundManager::stopMusic();
@@ -49,26 +64,60 @@ void GameplayState::loadState()
 void GameplayState::update()
 {
 	updateEntities();
+	removeEntities();
 }
+
+void GameplayState::removeEntities()
+{
+	if (objectToRemove.size() > 0)
+	{
+		std::vector<GameObject * >::iterator itr = objectList.begin();
+		std::vector<int>::iterator IDitr = objectToRemove.begin();
+
+		for (IDitr = objectToRemove.begin(); IDitr < objectToRemove.end(); IDitr++)
+		{
+			for (itr = objectList.begin(); itr < objectList.end(); )
+			{
+				if ((**itr).ID == *IDitr)
+				{
+					delete *itr;
+					itr = objectList.erase(itr);
+				}
+				else
+				{
+					itr++;
+				}
+			}
+		}
+
+		objectToRemove.clear();
+	}
+}
+
 
 void GameplayState::updateEntities()
 {
-	std::vector<GameObject * >::iterator itr = objectList.begin();
+	InputManager::processInputEvents();
 
+	std::vector<GameObject * >::iterator itr = objectList.begin();
+	
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		(**itr).update();
 	}
 
-	InputManager::processInputEvents();
+	for (itr = objectList.begin(); itr < objectList.end(); itr++)
+	{
+		(**itr).lateUpdate();
+	}
+
+	CollisionManager::clearFrameColliders();
 }
 
 void GameplayState::loadMap()
 {
 	std::vector<Room * >::iterator itr = (*((*currentMap).getRoomList())).begin();
 	
-	
-
 	for (itr = (*((*currentMap).getRoomList())).begin(); itr < (*((*currentMap).getRoomList())).end(); itr++)
 	{
 		if ((**itr).groupID == currentRoom)
@@ -77,6 +126,11 @@ void GameplayState::loadMap()
 			(*itr)->addRoomCollisions();
 		}
 	}
+}
+
+void GameplayState::removeObject(int _index)
+{
+	objectToRemove.push_back(_index);
 }
 
 void GameplayState::display(SDL_Renderer** _renderer)

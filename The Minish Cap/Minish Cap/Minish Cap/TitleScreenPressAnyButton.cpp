@@ -5,7 +5,7 @@
 TitleScreenKeyWait::TitleScreenKeyWait(SDL_Rect _pos) : GameObject(_pos)
 {
 	opacity = 0;
-	renderTag = UI;
+	renderTag = TAG_UI;
 	texturePos = { 327, 188, 89, 18};
 	textureName = "TitleScreen";
 }

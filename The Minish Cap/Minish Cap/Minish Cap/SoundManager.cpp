@@ -27,6 +27,7 @@ bool SoundManager::loadAllAudio()
 		loadSound("MC_Link_Sword3.wav", "MC_Link_Sword3") &&
 		loadSound("MC_Emote_Exclaim.wav", "MC_Emote_Exclaim") &&
 		loadSound("MC_Menu_Cursor.wav", "MC_Menu_Cursor") &&
+		loadSound("MC_Shatter.wav", "MC_Shatter") &&
 		loadSound("MC_Menu_Select.wav", "MC_Menu_Select")
 	);
 
@@ -99,4 +100,23 @@ void SoundManager::toggleMusicPause()
 			Mix_PauseMusic();
 		}
 	}
+}
+
+void SoundManager::unloadAllAudio()
+{
+	std::map<std::string, Mix_Chunk * >::iterator soundItr = soundFXList.begin();
+	std::map<std::string, Mix_Music * >::iterator musicItr = musicList.begin();
+
+	for (soundItr = soundFXList.begin(); soundItr != soundFXList.end(); soundItr++)
+	{
+		delete soundItr->second;
+	}
+
+	for (musicItr = musicList.begin(); musicItr != musicList.end(); musicItr++)
+	{
+		delete musicItr->second;
+	}
+
+	soundFXList.clear();
+	musicList.clear();
 }
