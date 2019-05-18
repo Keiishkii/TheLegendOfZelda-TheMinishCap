@@ -20,8 +20,10 @@ public:
 	static void addTriggerCollider(TriggerCollider * _collider) { triggerColliders.push_back(_collider); };
 
 	static bool checkSolidColliders(SDL_Rect _colliderBox, CollisionOrigin _origin);
+	static bool checkTriggerColliders(SDL_Rect _colliderBox, CollisionOrigin _origin, GameObject * triggeredObject);
 	static bool checkDamageColliders(SDL_Rect _colliderBox, CollisionOrigin _origin, int * _health);
 
+	static void removeCollider(int _ID);
 	static void clearFrameColliders();
 
 	static void clearColliders();

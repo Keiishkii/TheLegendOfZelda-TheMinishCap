@@ -1,5 +1,6 @@
 #include "InventoryManager.h"
 
+// Player inventory
 int InventoryManager::maxHealth = 12;
 int InventoryManager::currentHealth = 12;
 

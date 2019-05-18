@@ -9,7 +9,6 @@
 class FileSelect
 {
 private:
-
 	static std::vector<GameObject * > objectList;
 
 	static void addObjectToList(GameObject * _object);

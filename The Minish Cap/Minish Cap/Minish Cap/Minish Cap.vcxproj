@@ -141,7 +141,6 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="InventoryManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -153,6 +152,7 @@
     <ClCompile Include="SaveFileManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Rupee.cpp" />
     <ClCompile Include="TitleScreenState.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TitleScreenFont.cpp" />
@@ -175,13 +175,13 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameplayState.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="Inventory.h" />
     <ClInclude Include="InventoryManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pot.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="Rupee.h" />
     <ClInclude Include="SaveFile.h" />
     <ClInclude Include="SaveFileManager.h" />
     <ClInclude Include="TitleScreenState.h" />

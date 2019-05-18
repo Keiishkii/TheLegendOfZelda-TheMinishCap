@@ -2,10 +2,12 @@
 
 #include <iostream>
 
+// save files
 SaveFile SaveFileManager::save0;
 SaveFile SaveFileManager::save1;
 SaveFile SaveFileManager::save2;
 
+// Loads in all the saves from there files
 void SaveFileManager::loadSaves()
 {
 	save0.loadFileData("Saves/save_0.txt");
@@ -16,10 +18,12 @@ void SaveFileManager::loadSaves()
 	save2.getName() = "Save 2";
 }
 
+// returns the save based on the ID given
 SaveFile * SaveFileManager::getSave(int _saveID)
 {
 	SaveFile * file = nullptr;
 
+	// checks all save IDs against the given ID and sets file to that save
 	switch (_saveID)
 	{
 	case 0:
@@ -32,6 +36,6 @@ SaveFile * SaveFileManager::getSave(int _saveID)
 		file = &save2;
 		break;
 	}
-
+	// returns the file
 	return file;
 }

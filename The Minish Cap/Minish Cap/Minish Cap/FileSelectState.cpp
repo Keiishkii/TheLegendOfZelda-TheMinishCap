@@ -52,6 +52,7 @@ void FileSelect::unloadState()
 {
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 
+	// deletes and clears the list
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		delete	*itr;
@@ -63,6 +64,7 @@ void FileSelect::update()
 {
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 
+	// updates all the gameobjects
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		(**itr).update();
@@ -73,18 +75,22 @@ void FileSelect::update()
 
 void FileSelect::display(SDL_Renderer ** _renderer)
 {
+	// clears the renderer
 	SDL_RenderClear(*_renderer);
 
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 
+	// draws all gameobjects to the renderer
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		(**itr).draw(_renderer);
 	}
 
+	// draws the renderer
 	SDL_RenderPresent(*_renderer);
 }
 
+// checks the menu inputs
 void FileSelect::inputs()
 {
 	InputManager::processInputEvents();
@@ -99,13 +105,16 @@ void FileSelect::inputs()
 		loadSelectedFile();
 }
 
+// adds an objec tot the object list in the order of its rendering tag
 void FileSelect::addObjectToList(GameObject * _object)
 {
+	// checks if the object list is greater then 0
 	if (objectList.size() > 0)
 	{
 		std::vector<GameObject * >::iterator itr = objectList.begin();
 		bool added = false;
 
+		// iterates throught he list and inputs the new game object one before the rendertag higher then it
 		for (itr = objectList.begin(); itr < objectList.end(); itr++)
 		{
 			if ((*_object).renderTag < (**itr).renderTag)
@@ -116,6 +125,7 @@ void FileSelect::addObjectToList(GameObject * _object)
 			}
 		}
 
+		// if it hasnt found anything higher then it add it to the end
 		if (!added)
 		{
 			objectList.push_back(_object);
@@ -123,10 +133,11 @@ void FileSelect::addObjectToList(GameObject * _object)
 	}
 	else
 	{
+		// adds it to the start if no objects are in the list
 		objectList.push_back(_object);
 	}
 }
-
+// changes selected file to the one aboce it
 void FileSelect::moveUpSelected()
 {
 	if (selectedSave > 0)
@@ -137,6 +148,7 @@ void FileSelect::moveUpSelected()
 	}
 }
 
+// changes selected file to the one below it
 void FileSelect::moveDownSelected()
 {
 	if (selectedSave < 2)
@@ -147,8 +159,10 @@ void FileSelect::moveDownSelected()
 	}
 }
 
+// loads the selected file into the game loop
 void FileSelect::loadSelectedFile()
 {
+	// changes state to gameplay and loads in at the files map
 	SoundManager::playSound("MC_Menu_Select");
 	unloadState();
 	GameManager::gameState = GAMEPLAY;
@@ -156,6 +170,7 @@ void FileSelect::loadSelectedFile()
 	GameplayState::loadState();
 }
 
+// displays the new selected file
 void FileSelect::displayFileContent()
 {
 	removeFileDisplay();
@@ -165,6 +180,7 @@ void FileSelect::displayFileContent()
 	int maxHearts = (*selectedFile).getMaxHealth();
 	int currentHearts = (*selectedFile).getCurrentHealth();
 
+	// while there is more hearts t be displayed adds a new one with an ofset and sets its value to the remaining health
 	for (int i = 0; i < ((maxHearts / 4)); i++)
 	{
 		int heartTexture = (currentHearts - (4 * i));
@@ -192,12 +208,14 @@ void FileSelect::displayFileContent()
 	}
 }
 
+// removes the displayed of the old selected files group
 void FileSelect::removeFileDisplay()
 {
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 	
 	int removeNum = 0;
 
+	//iteratees through game obejct list and removes objects in the displayed group
 	for (itr = objectList.begin(); itr < objectList.end(); )
 	{
 		if ((**itr).groupID == 1)

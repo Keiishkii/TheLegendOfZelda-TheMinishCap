@@ -10,6 +10,7 @@ TitleScreenKeyWait::TitleScreenKeyWait(SDL_Rect _pos) : GameObject(_pos)
 	textureName = "TitleScreen";
 }
 
+// draws the sprite with its current texutre position to the renderer
 void TitleScreenKeyWait::draw(SDL_Renderer ** _renderer)
 {
 	if (animationFrame >= 200)

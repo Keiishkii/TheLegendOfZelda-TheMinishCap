@@ -4,16 +4,22 @@
 
 #include "SDL.h"
 
+// struct for storing all player inputs
 InputManager::inputEvents InputManager::input = { false };
 
+// Checks the frames input
 void InputManager::processInputEvents()
 {
+	// variables to store prevous frames input
 	InputManager::inputEvents prevousInput;
 
+	// sets prevous frames input
 	prevousInput = input;
 
+	// sets current frames input to false
 	input = { false };
 
+	// sets current frames down values to the prevous frames
 	input.KeyWDown = prevousInput.KeyWDown;
 	input.KeySDown = prevousInput.KeySDown;
 	input.KeyDDown = prevousInput.KeyDDown;
@@ -30,9 +36,11 @@ void InputManager::processInputEvents()
 	input.MouseRightDown = prevousInput.MouseRightDown;
 
 	SDL_Event e;
-
+	
+	// Polls events while there are events active
 	while (SDL_PollEvent(&e))
 	{
+		// 
 		switch ( e.type)
 		{
 			case SDL_KEYDOWN:

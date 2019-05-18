@@ -12,6 +12,7 @@ TitleScreenLightRays::TitleScreenLightRays(SDL_Rect _pos) : GameObject(_pos)
 	textureName = "TitleScreen";
 }
 
+// draws the sprite with its current texutre position to the renderer
 void TitleScreenLightRays::draw(SDL_Renderer ** _renderer)
 {
 	switch ((animationFrame / 10) % 4)

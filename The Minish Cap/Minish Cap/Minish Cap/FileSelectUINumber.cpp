@@ -11,6 +11,7 @@ FileSelectUINumber::FileSelectUINumber(SDL_Rect _pos, int _fileID) : GameObject(
 	textureName = "FileSelectScreen";
 }
 
+// draws the sprite with its current texutre position to the renderer
 void FileSelectUINumber::draw(SDL_Renderer ** _renderer)
 {
 	switch (fileID)

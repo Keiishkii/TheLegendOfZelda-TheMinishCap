@@ -11,32 +11,81 @@ bool CollisionManager::checkSolidColliders(SDL_Rect _colliderBox, CollisionOrigi
 	bool collided = false;
 
 	std::vector<SolidCollider *>::iterator itr = solidColliders.begin();
-	
+
 	for (itr = solidColliders.begin(); itr < solidColliders.end(); itr++)
 	{
 		switch (_origin)
-			{
-			case E_UNASIGNED:
-			{
-				if ((*itr)->type != PLAYER_ONLY && (*itr)->type != ENEMY_ONLY)
-					if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
-						collided = true;
-				break;
-			}
-			case E_ENEMY:
-			{
-				if ((*itr)->type != UNIVERSAL_BUT_ENEMY && (*itr)->type != PLAYER_ONLY)
-					if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
-						collided = true;
-				break;
-			}
-			case E_PLAYER:
-			{
-				if ((*itr)->type != UNIVERSAL_BUT_PLAYER && (*itr)->type != ENEMY_ONLY)
-					if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
-						collided = true;
-				break;
-			}
+		{
+		case E_UNASIGNED:
+		{
+			if ((*itr)->type != PLAYER_ONLY && (*itr)->type != ENEMY_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+					collided = true;
+			break;
+		}
+		case E_ENEMY:
+		{
+			if ((*itr)->type != UNIVERSAL_BUT_ENEMY && (*itr)->type != PLAYER_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+					collided = true;
+			break;
+		}
+		case E_PLAYER:
+		{
+			if ((*itr)->type != UNIVERSAL_BUT_PLAYER && (*itr)->type != ENEMY_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+					collided = true;
+			break;
+		}
+		}
+
+		if (collided)
+			break;
+	}
+
+	return collided;
+}
+
+bool CollisionManager::checkTriggerColliders(SDL_Rect _colliderBox, CollisionOrigin _origin, GameObject * _triggeredObject)
+{
+	bool collided = false;
+
+	std::vector<TriggerCollider *>::iterator itr = triggerColliders.begin();
+
+	for (itr = triggerColliders.begin(); itr < triggerColliders.end(); itr++)
+	{
+		switch (_origin)
+		{
+		case E_UNASIGNED:
+		{
+			if ((*itr)->type != PLAYER_ONLY && (*itr)->type != ENEMY_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+				{
+					(*itr)->triggerFunction(_triggeredObject, (*itr)->source);
+					collided = true;
+				}
+			break;
+		}
+		case E_ENEMY:
+		{
+			if ((*itr)->type != UNIVERSAL_BUT_ENEMY && (*itr)->type != PLAYER_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+				{
+					(*itr)->triggerFunction(_triggeredObject, (*itr)->source);
+					collided = true;
+				}
+			break;
+		}
+		case E_PLAYER:
+		{
+			if ((*itr)->type != UNIVERSAL_BUT_PLAYER && (*itr)->type != ENEMY_ONLY)
+				if (SDL_HasIntersection((*itr)->boxBounds, &_colliderBox))
+				{
+					(*itr)->triggerFunction(_triggeredObject, (*itr)->source);
+					collided = true;
+				}
+			break;
+		}
 		}
 
 		if (collided)
@@ -94,6 +143,20 @@ bool CollisionManager::checkDamageColliders(SDL_Rect _colliderBox, CollisionOrig
 	}
 
 	return collided;
+}
+
+void CollisionManager::removeCollider(int _ID)
+{
+	std::vector<SolidCollider * >::iterator solidItr = solidColliders.begin();
+
+	for (solidItr = solidColliders.begin(); solidItr < solidColliders.end(); solidItr++)
+	{
+		if ((*solidItr)->IDGroup == _ID)
+		{
+			delete *solidItr;
+			solidItr = solidColliders.erase(solidItr);
+		}
+	}
 }
 
 void CollisionManager::clearFrameColliders()

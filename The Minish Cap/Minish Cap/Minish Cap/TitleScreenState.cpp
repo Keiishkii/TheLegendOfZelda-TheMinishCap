@@ -36,13 +36,16 @@ void TitleScreen::loadState()
 	SoundManager::playMusic("01 Title Screen");
 }
 
+// adds an objec tot the object list in the order of its rendering tag
 void TitleScreen::addObjectToList(GameObject * _object)
 {
+	// checks if the object list is greater then 0
 	if (objectList.size() > 0)
 	{
 		std::vector<GameObject * >::iterator itr = objectList.begin();
 		bool added = false;
 
+		// iterates throught he list and inputs the new game object one before the rendertag higher then it
 		for (itr = objectList.begin(); itr < objectList.end(); itr++)
 		{
 			if ((*_object).renderTag < (**itr).renderTag)
@@ -53,6 +56,7 @@ void TitleScreen::addObjectToList(GameObject * _object)
 			}
 		}
 
+		// if it hasnt found anything higher then it add it to the end
 		if (!added)
 		{
 			objectList.push_back(_object);
@@ -60,28 +64,34 @@ void TitleScreen::addObjectToList(GameObject * _object)
 	}
 	else
 	{
+		// adds it to the start if no objects are in the list
 		objectList.push_back(_object);
 	}
 }
 
+// update function for the title screen
 void TitleScreen::update()
 {
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 
+	// calls the update function for all objects in the object list
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		(**itr).update();
 	}
 
+	// processes the inputs given by the player
 	inputs();
 }
 
+// display function for the title screen
 void TitleScreen::display(SDL_Renderer** _renderer)
 {
 	SDL_RenderClear(*_renderer);
 
 	std::vector<GameObject * >::iterator itr = objectList.begin();
 			
+	// calls the display function for all of the objects
 	for (itr = objectList.begin(); itr < objectList.end(); itr++)
 	{
 		(**itr).draw(_renderer);
@@ -90,10 +100,12 @@ void TitleScreen::display(SDL_Renderer** _renderer)
 	SDL_RenderPresent(*_renderer);
 }
 
+// player input functions
 void TitleScreen::inputs()
 {
 	InputManager::processInputEvents();
 
+	// if enter is pressed the title screen closes and the file select opens
 	if (InputManager::input.KeyReturnPressed)
 	{
 		SoundManager::playSound("MC_Menu_Select");
@@ -103,6 +115,7 @@ void TitleScreen::inputs()
 	}
 }
 
+// unloads all the new objects in the lists when the list is closing
 void TitleScreen::unloadState()
 {
 	std::vector<GameObject * >::iterator itr = objectList.begin();

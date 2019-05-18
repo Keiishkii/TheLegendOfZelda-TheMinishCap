@@ -27,6 +27,7 @@ void FileSelectCursor::update()
 	}
 }
 
+// draws the sprite with its current texutre position to the renderer
 void FileSelectCursor::draw(SDL_Renderer ** _renderer)
 {
 	if (animationFrame < 8)

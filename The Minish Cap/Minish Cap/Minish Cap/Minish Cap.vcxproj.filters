@@ -58,11 +58,20 @@
     <Filter Include="Header Files\GameObjects\Entities">
       <UniqueIdentifier>{d09dfff0-550d-4172-8f12-2606702d1df4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObjects\Enities">
-      <UniqueIdentifier>{acba90e8-3302-45f1-b088-a0f24ea06c92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\GameObjects\Entities\Enemies">
       <UniqueIdentifier>{c03e6f56-4667-4b6d-a816-0bf0281f60be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Entities\Items">
+      <UniqueIdentifier>{42b7d0eb-b96b-4f7d-af7f-38c010e9bf9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Entities">
+      <UniqueIdentifier>{acba90e8-3302-45f1-b088-a0f24ea06c92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Entities\Enemies">
+      <UniqueIdentifier>{eac3932a-4668-496c-9822-e4e2c9f502cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Entities\Items">
+      <UniqueIdentifier>{c08b7ab1-9fc8-45c2-9c4a-82731e12f5de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +129,6 @@
     <ClInclude Include="SaveFile.h">
       <Filter>Header Files\GameData</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Header Files\GameData</Filter>
-    </ClInclude>
     <ClInclude Include="MapManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
@@ -155,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Pot.h">
       <Filter>Header Files\GameObjects\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Rupee.h">
+      <Filter>Header Files\GameObjects\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -215,9 +224,6 @@
     <ClCompile Include="SaveFile.cpp">
       <Filter>Source Files\GameData</Filter>
     </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Source Files\GameData</Filter>
-    </ClCompile>
     <ClCompile Include="MapManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
@@ -231,7 +237,7 @@
       <Filter>Source Files\GameData</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files\GameObjects\Enities</Filter>
+      <Filter>Source Files\GameObjects\Entities</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Managers</Filter>
@@ -243,10 +249,13 @@
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Source Files\GameObjects\Enities</Filter>
+      <Filter>Source Files\GameObjects\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Pot.cpp">
-      <Filter>Source Files\GameObjects\Enities</Filter>
+      <Filter>Source Files\GameObjects\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Rupee.cpp">
+      <Filter>Source Files\GameObjects\Entities\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

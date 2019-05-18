@@ -6,6 +6,7 @@
 #include "InputManager.h"
 #include "SoundManager.h"
 
+//constructor
 Player::Player(SDL_Rect _pos) : GameObject(_pos)
 {
 	renderTag = TAG_ENTITY;
@@ -30,6 +31,7 @@ Player::Player(SDL_Rect _pos) : GameObject(_pos)
 	texturePos = SDL_Rect{ 8, 3, 32, 32 };
 }
 
+// updates the player based there inputs and states
 void Player::update()
 {
 	getInput();
@@ -40,11 +42,14 @@ void Player::update()
 	position.y = yPos;
 }
 
+// checks damage after damage colliders where added in the gameObjects updates
 void Player::lateUpdate()
 {
+	CollisionManager::checkTriggerColliders(SDL_Rect(collisionBox), E_PLAYER, this);
 	damageCheck();
 }
 
+// checks to see if the player has taken damage.
 void Player::damageCheck()
 {
 	int healthChange;
@@ -67,6 +72,7 @@ void Player::damageCheck()
 	}
 }
 
+// selects and calls the behavour to run based on the current state
 void Player::processesStates()
 {
 	switch (state)
@@ -98,11 +104,13 @@ void Player::processesStates()
 	}
 }
 
+// Idle behavour
 void Player::idle()
 {
 
 }
 
+// Walking behavour
 void Player::walking()
 {
 	switch (direction)
@@ -208,6 +216,7 @@ void Player::walking()
 	}
 }
 
+// Rowling behavour
 void Player::rowling()
 {
 	float inputSpeed = sqrt(pow(xVelocity, 2) + pow(yVelocity, 2));
@@ -228,6 +237,7 @@ void Player::rowling()
 	}
 }
 
+// Attacking behavour
 void Player::attacking()
 {
 	int animationLength = 2;
@@ -310,68 +320,131 @@ void Player::attacking()
 	case EAST:
 		if (animationFrame < animationLength)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 2)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 3)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 4)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 5)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 6)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 7)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 8)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 9)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 10)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		break;
 	case SOUTH:
 		if (animationFrame < animationLength)
 		{
+			collider.x += -19;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 2)
 		{
+			collider.x += -15;
+			collider.y += 21;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 3)
 		{
+			collider.x += -11;
+			collider.y += 23;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 4)
 		{
+			collider.x += -7;
+			collider.y += 24;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 5)
 		{
+			collider.x += -3;
+			collider.y += 25;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 6)
 		{
+			collider.x += 1;
+			collider.y += 26;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 7)
 		{
+			collider.x += 5;
+			collider.y += 25;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 8)
 		{
+			collider.x += 9;
+			collider.y += 24;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 9)
 		{
+			collider.x += 13;
+			collider.y += 23;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 10)
 		{
+			collider.x += 17;
+			collider.y += 21;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		else if (animationFrame < animationLength * 11)
 		{
+			collider.x += 21;
+			collider.y += 19;
+			CollisionManager::addDamageCollider(new DamageCollider(collider, UNIVERSAL_BUT_PLAYER, E_PLAYER, 4));
 		}
 		break;
 	case WEST:
@@ -409,6 +482,7 @@ void Player::attacking()
 	}
 }
 
+// Changes the players state based on there inputs and the state the character is currently in
 void Player::getInput()
 {
 	PlayerState prevousState = state;
@@ -527,12 +601,14 @@ void Player::attackSound()
 		SoundManager::playSound("MC_Link_Sword3");
 }
 
+// draws the sprite with its current texutre position to the renderer
 void Player::draw(SDL_Renderer ** _renderer)
 {
 	SDL_Rect offsetPosition = position;
 	offsetPosition.x += Camera::xPositionOfset;
 	offsetPosition.y += Camera::yPositionOfset;
 
+	// changes the animation texture based on the players state and the animation frame
 	switch (state)
 	{
 	case IDLE:
@@ -983,6 +1059,7 @@ void Player::draw(SDL_Renderer ** _renderer)
 	else
 		animationFrame++;
 
+	// flips the sprite if the animation is facing east
 	if (direction == EAST)
 		SDL_RenderCopyEx(*_renderer, (TextureManager::getTexture(textureName)), &texturePos, &offsetPosition, 0, NULL, (SDL_RendererFlip)(SDL_FLIP_HORIZONTAL));
 	else

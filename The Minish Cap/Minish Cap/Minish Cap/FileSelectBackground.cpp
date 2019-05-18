@@ -9,6 +9,7 @@ FileSelectBackground::FileSelectBackground(SDL_Rect _pos) : GameObject(_pos)
 	textureName = "FileSelectScreen";
 }
 
+// draws the sprite with its current texutre position to the renderer
 void FileSelectBackground::draw(SDL_Renderer ** _renderer)
 {
 	switch ((animationFrame / 40) % 4)

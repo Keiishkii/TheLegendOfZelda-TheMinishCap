@@ -4,6 +4,7 @@
 
 #include "CollisionManager.h"
 #include "SoundManager.h"
+#include "Rupee.h"
 
 Pot::Pot(SDL_Rect _pos, SDL_Rect _textPos, std::string _textName, RenderTag _tag) : Entity(_pos, _textPos, _textName, _tag) 
 {
@@ -26,6 +27,27 @@ void Pot::update()
 
 void Pot::death()
 {
+	int i = rand() % 100;
+
+	if (i < 10)
+	{
+		SDL_Rect location = { position.x + ((position.w / 2) -7), position.y + ((position.h / 2) - 10), 14, 20 };
+		GameplayState::addObjectToList(new Rupee(location, SDL_Rect{ 0,0, 7,10 }, "Rupees", TAG_GROUND_ENTITY, 20));
+	}
+	else if (i < 40)
+	{
+		SDL_Rect location = { position.x + ((position.w / 2) - 7), position.y + ((position.h / 2) - 10), 14, 20 };
+		GameplayState::addObjectToList(new Rupee(location, SDL_Rect{ 0,0, 7,10 }, "Rupees", TAG_GROUND_ENTITY, 5));
+	}
+	else
+	{
+		SDL_Rect location = { position.x + ((position.w / 2) - 7), position.y + ((position.h / 2) - 10), 14, 20 };
+		GameplayState::addObjectToList(new Rupee(location, SDL_Rect{ 0,0, 7,10 }, "Rupees", TAG_GROUND_ENTITY, 1));
+	}
+
+	SoundManager::playSound("MC_Rupee_Bounce");
+
+	CollisionManager::removeCollider(ID);
 	GameplayState::removeObject(ID);
 }
 
