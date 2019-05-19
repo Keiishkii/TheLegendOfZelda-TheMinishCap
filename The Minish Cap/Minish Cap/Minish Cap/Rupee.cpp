@@ -105,6 +105,7 @@ Rupee::~Rupee()
 // function called when a rupee is picked up
 void triggerEntered(GameObject * _object, GameObject * _source)
 {
+	CollisionManager::removeTriggerCollider((*_source).ID);
 	GameplayState::removeObject((*_source).ID);
 	SoundManager::playSound("MC_Rupee");
 	InventoryManager::rupees += ((Rupee * )(_source))->getAmount();

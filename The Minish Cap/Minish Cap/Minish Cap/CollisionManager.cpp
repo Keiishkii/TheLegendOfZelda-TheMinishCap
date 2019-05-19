@@ -145,6 +145,20 @@ bool CollisionManager::checkDamageColliders(SDL_Rect _colliderBox, CollisionOrig
 	return collided;
 }
 
+void CollisionManager::removeTriggerCollider(int _ID)
+{
+	std::vector<TriggerCollider * >::iterator trigItr = triggerColliders.begin();
+
+	for (trigItr = triggerColliders.begin(); trigItr < triggerColliders.end(); trigItr++)
+	{
+		if ((*trigItr)->IDGroup == _ID)
+		{
+			delete *trigItr;
+			trigItr = triggerColliders.erase(trigItr);
+		}
+	}
+}
+
 void CollisionManager::removeCollider(int _ID)
 {
 	std::vector<SolidCollider * >::iterator solidItr = solidColliders.begin();

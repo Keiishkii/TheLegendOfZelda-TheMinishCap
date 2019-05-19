@@ -24,6 +24,7 @@ public:
 	static bool checkDamageColliders(SDL_Rect _colliderBox, CollisionOrigin _origin, int * _health);
 
 	static void removeCollider(int _ID);
+	static void removeTriggerCollider(int _ID);
 	static void clearFrameColliders();
 
 	static void clearColliders();
